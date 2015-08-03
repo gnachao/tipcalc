@@ -13,6 +13,11 @@
 		0E7A0FBB1B6D492200F7E64A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FBA1B6D492200F7E64A /* Images.xcassets */; };
 		0E7A0FBE1B6D492200F7E64A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FBC1B6D492200F7E64A /* LaunchScreen.xib */; };
 		0E7A0FCA1B6D492200F7E64A /* tipsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FC91B6D492200F7E64A /* tipsterTests.swift */; };
+		0E7A0FD81B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FD71B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift */; };
+		0E7A0FDC1B6F39CD00F7E64A /* TornPaper1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FDB1B6F39CD00F7E64A /* TornPaper1.png */; };
+		0E7A0FDE1B6F485B00F7E64A /* TornPaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */; };
+		0E7A0FE21B6F6AB000F7E64A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FE11B6F6AB000F7E64A /* background.png */; };
+		0E7A0FE41B6F6AB800F7E64A /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FE31B6F6AB800F7E64A /* food.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		0E7A0FC31B6D492200F7E64A /* tipsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tipsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7A0FC81B6D492200F7E64A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E7A0FC91B6D492200F7E64A /* tipsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipsterTests.swift; sourceTree = "<group>"; };
+		0E7A0FD71B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControlCustomizer.swift; sourceTree = "<group>"; };
+		0E7A0FDB1B6F39CD00F7E64A /* TornPaper1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TornPaper1.png; sourceTree = "<group>"; };
+		0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TornPaper.png; sourceTree = "<group>"; };
+		0E7A0FE11B6F6AB000F7E64A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		0E7A0FE31B6F6AB800F7E64A /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 				0E7A0FB71B6D492200F7E64A /* Main.storyboard */,
 				0E7A0FBA1B6D492200F7E64A /* Images.xcassets */,
 				0E7A0FBC1B6D492200F7E64A /* LaunchScreen.xib */,
+				0E7A0FD71B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift */,
 				0E7A0FB11B6D492200F7E64A /* Supporting Files */,
 			);
 			path = tipster;
@@ -90,6 +101,10 @@
 		0E7A0FB11B6D492200F7E64A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0E7A0FDB1B6F39CD00F7E64A /* TornPaper1.png */,
+				0E7A0FE11B6F6AB000F7E64A /* background.png */,
+				0E7A0FE31B6F6AB800F7E64A /* food.png */,
+				0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */,
 				0E7A0FB21B6D492200F7E64A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -194,8 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E7A0FB91B6D492200F7E64A /* Main.storyboard in Resources */,
+				0E7A0FE21B6F6AB000F7E64A /* background.png in Resources */,
+				0E7A0FDE1B6F485B00F7E64A /* TornPaper.png in Resources */,
 				0E7A0FBE1B6D492200F7E64A /* LaunchScreen.xib in Resources */,
+				0E7A0FE41B6F6AB800F7E64A /* food.png in Resources */,
 				0E7A0FBB1B6D492200F7E64A /* Images.xcassets in Resources */,
+				0E7A0FDC1B6F39CD00F7E64A /* TornPaper1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E7A0FD81B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift in Sources */,
 				0E7A0FB61B6D492200F7E64A /* ViewController.swift in Sources */,
 				0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */,
 			);
