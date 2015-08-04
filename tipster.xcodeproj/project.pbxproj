@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E58E4FC1B6FE47400F566A6 /* DJB Messy Amanda Goes Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */; };
+		0E58E4FF1B6FE5E500F566A6 /* Always Forever Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */; };
+		0E58E5001B6FE5E800F566A6 /* Always Forever.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */; };
+		0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E5021B70067600F566A6 /* daddysgirl.ttf */; };
+		0E58E5051B7046A200F566A6 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58E5041B7046A200F566A6 /* Transitions.swift */; };
 		0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FB31B6D492200F7E64A /* AppDelegate.swift */; };
 		0E7A0FB61B6D492200F7E64A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FB51B6D492200F7E64A /* ViewController.swift */; };
 		0E7A0FB91B6D492200F7E64A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FB71B6D492200F7E64A /* Main.storyboard */; };
@@ -31,6 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DJB Messy Amanda Goes Bold.ttf"; sourceTree = "<group>"; };
+		0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Always Forever Bold.ttf"; sourceTree = "<group>"; };
+		0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Always Forever.ttf"; sourceTree = "<group>"; };
+		0E58E5011B6FFAC200F566A6 /* Notera_PersonalUseOnly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notera_PersonalUseOnly.ttf; sourceTree = "<group>"; };
+		0E58E5021B70067600F566A6 /* daddysgirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = daddysgirl.ttf; sourceTree = "<group>"; };
+		0E58E5041B7046A200F566A6 /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		0E7A0FAE1B6D492200F7E64A /* tipster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7A0FB21B6D492200F7E64A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E7A0FB31B6D492200F7E64A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +77,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E58E4F81B6FE27D00F566A6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */,
+				0E7A0FE31B6F6AB800F7E64A /* food.png */,
+				0E7A0FE11B6F6AB000F7E64A /* background.png */,
+				0E7A0FDB1B6F39CD00F7E64A /* TornPaper1.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		0E58E4F91B6FE29700F566A6 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				0E58E5021B70067600F566A6 /* daddysgirl.ttf */,
+				0E58E5011B6FFAC200F566A6 /* Notera_PersonalUseOnly.ttf */,
+				0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */,
+				0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */,
+				0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
 		0E7A0FA51B6D492200F7E64A = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +124,7 @@
 				0E7A0FB31B6D492200F7E64A /* AppDelegate.swift */,
 				0E7A0FB51B6D492200F7E64A /* ViewController.swift */,
 				0E7A0FB71B6D492200F7E64A /* Main.storyboard */,
+				0E58E5041B7046A200F566A6 /* Transitions.swift */,
 				0E7A0FBA1B6D492200F7E64A /* Images.xcassets */,
 				0E7A0FBC1B6D492200F7E64A /* LaunchScreen.xib */,
 				0E7A0FD71B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift */,
@@ -101,10 +136,8 @@
 		0E7A0FB11B6D492200F7E64A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0E7A0FDB1B6F39CD00F7E64A /* TornPaper1.png */,
-				0E7A0FE11B6F6AB000F7E64A /* background.png */,
-				0E7A0FE31B6F6AB800F7E64A /* food.png */,
-				0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */,
+				0E58E4F91B6FE29700F566A6 /* font */,
+				0E58E4F81B6FE27D00F566A6 /* images */,
 				0E7A0FB21B6D492200F7E64A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -208,11 +241,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E58E5001B6FE5E800F566A6 /* Always Forever.ttf in Resources */,
 				0E7A0FB91B6D492200F7E64A /* Main.storyboard in Resources */,
 				0E7A0FE21B6F6AB000F7E64A /* background.png in Resources */,
 				0E7A0FDE1B6F485B00F7E64A /* TornPaper.png in Resources */,
+				0E58E4FF1B6FE5E500F566A6 /* Always Forever Bold.ttf in Resources */,
 				0E7A0FBE1B6D492200F7E64A /* LaunchScreen.xib in Resources */,
+				0E58E4FC1B6FE47400F566A6 /* DJB Messy Amanda Goes Bold.ttf in Resources */,
 				0E7A0FE41B6F6AB800F7E64A /* food.png in Resources */,
+				0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */,
 				0E7A0FBB1B6D492200F7E64A /* Images.xcassets in Resources */,
 				0E7A0FDC1B6F39CD00F7E64A /* TornPaper1.png in Resources */,
 			);
@@ -234,6 +271,7 @@
 			files = (
 				0E7A0FD81B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift in Sources */,
 				0E7A0FB61B6D492200F7E64A /* ViewController.swift in Sources */,
+				0E58E5051B7046A200F566A6 /* Transitions.swift in Sources */,
 				0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +470,7 @@
 				0E7A0FCF1B6D492200F7E64A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E7A0FD01B6D492200F7E64A /* Build configuration list for PBXNativeTarget "tipsterTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +479,7 @@
 				0E7A0FD21B6D492200F7E64A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
