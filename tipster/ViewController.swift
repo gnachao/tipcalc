@@ -63,6 +63,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tipRateFieldEditingChange(sender: AnyObject) {
+        if (tipRateField.text as NSString).length > 4 {
+           
+            
+        }
         
         tipRateSegment.setTitle(tipRateField.text + "%", forSegmentAtIndex: 5)
         

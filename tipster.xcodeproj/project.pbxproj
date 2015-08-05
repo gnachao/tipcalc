@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E58E4FC1B6FE47400F566A6 /* DJB Messy Amanda Goes Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */; };
-		0E58E4FF1B6FE5E500F566A6 /* Always Forever Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */; };
-		0E58E5001B6FE5E800F566A6 /* Always Forever.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */; };
 		0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E5021B70067600F566A6 /* daddysgirl.ttf */; };
 		0E58E5051B7046A200F566A6 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58E5041B7046A200F566A6 /* Transitions.swift */; };
 		0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FB31B6D492200F7E64A /* AppDelegate.swift */; };
@@ -36,10 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DJB Messy Amanda Goes Bold.ttf"; sourceTree = "<group>"; };
-		0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Always Forever Bold.ttf"; sourceTree = "<group>"; };
-		0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Always Forever.ttf"; sourceTree = "<group>"; };
-		0E58E5011B6FFAC200F566A6 /* Notera_PersonalUseOnly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notera_PersonalUseOnly.ttf; sourceTree = "<group>"; };
 		0E58E5021B70067600F566A6 /* daddysgirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = daddysgirl.ttf; sourceTree = "<group>"; };
 		0E58E5041B7046A200F566A6 /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		0E7A0FAE1B6D492200F7E64A /* tipster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +50,7 @@
 		0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TornPaper.png; sourceTree = "<group>"; };
 		0E7A0FE11B6F6AB000F7E64A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		0E7A0FE31B6F6AB800F7E64A /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
+		0E9B12C81B71ED240085F759 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArchitectsDaughter.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +85,8 @@
 		0E58E4F91B6FE29700F566A6 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				0E9B12C81B71ED240085F759 /* ArchitectsDaughter.ttf */,
 				0E58E5021B70067600F566A6 /* daddysgirl.ttf */,
-				0E58E5011B6FFAC200F566A6 /* Notera_PersonalUseOnly.ttf */,
-				0E58E4FD1B6FE59500F566A6 /* Always Forever Bold.ttf */,
-				0E58E4FE1B6FE59500F566A6 /* Always Forever.ttf */,
-				0E58E4FA1B6FE2A700F566A6 /* DJB Messy Amanda Goes Bold.ttf */,
 			);
 			name = font;
 			sourceTree = "<group>";
@@ -241,13 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E58E5001B6FE5E800F566A6 /* Always Forever.ttf in Resources */,
 				0E7A0FB91B6D492200F7E64A /* Main.storyboard in Resources */,
 				0E7A0FE21B6F6AB000F7E64A /* background.png in Resources */,
 				0E7A0FDE1B6F485B00F7E64A /* TornPaper.png in Resources */,
-				0E58E4FF1B6FE5E500F566A6 /* Always Forever Bold.ttf in Resources */,
 				0E7A0FBE1B6D492200F7E64A /* LaunchScreen.xib in Resources */,
-				0E58E4FC1B6FE47400F566A6 /* DJB Messy Amanda Goes Bold.ttf in Resources */,
 				0E7A0FE41B6F6AB800F7E64A /* food.png in Resources */,
 				0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */,
 				0E7A0FBB1B6D492200F7E64A /* Images.xcassets in Resources */,
