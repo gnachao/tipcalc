@@ -10,16 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // bill total 
+    @IBOutlet weak var billTotalUIView: UIView!
     @IBOutlet weak var billField: UITextField!
-    @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
     
+    // total payment
+    @IBOutlet weak var totalPaymentUIView: UIView!
+    @IBOutlet weak var totalPaymentSubUIView: UIView!
+    @IBOutlet weak var totalPaymentLine: UIView!
     @IBOutlet weak var tipRateSegment: UISegmentedControl!
     @IBOutlet weak var tipRateField: UITextField!
     @IBOutlet weak var tipRateButton: UIButton!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var serviceLabel: UILabel!
     
-    @IBOutlet weak var guestCheckUIView: UIView!
-    @IBOutlet weak var guestCheckTotalUIView: UIView!
+    // split payment
+    @IBOutlet weak var splitPaymentUIView: UIView!
+    @IBOutlet weak var splitPaymentSubUIView: UIView!
+    @IBOutlet weak var splitSegment: UISegmentedControl!
+    @IBOutlet weak var totalPerPerson: UILabel!
+    @IBOutlet weak var tipPerPerson: UILabel!
+    @IBOutlet weak var totalPerPersonExcudeTip: UILabel!
+    @IBOutlet weak var splitCalculationTextView: UITextView!
+    @IBOutlet weak var tipRateCalculationTextView: UITextView!
+    
+    // images
+    @IBOutlet weak var foodBgk: UIImageView!
+    
 
     override func viewDidLoad() {
         
@@ -45,8 +63,8 @@ class ViewController: UIViewController {
         view.endEditing(true)
         resetSegmentedControlCustomIndexDefault()
         
-        guestCheckUIView.hidden = false
-        guestCheckUIView.moveInFromBottom(duration: 1.0, completionDelegate: nil)
+        splitPaymentSubUIView.hidden = false
+        splitPaymentSubUIView.moveInFromBottom(duration: 1.0, completionDelegate: nil)
         
     }
     
@@ -90,26 +108,36 @@ class ViewController: UIViewController {
     }
     
     func setApearance(){
+        
+        // bill total view
+        billTotalUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+
+        // total payment view
+        totalPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+        totalPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        totalPaymentLine.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
+
+        // split payment view
+        splitPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+        splitPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        
         // add shadow to guestCheckUIView
-        guestCheckUIView.layer.shadowColor = UIColor(red: 0.514, green: 0.545, blue: 0.545, alpha: 1).CGColor;
-        guestCheckUIView.layer.shadowOffset = CGSizeMake(5, 5);
-        guestCheckUIView.layer.shadowOpacity = 1;
-        guestCheckUIView.layer.shadowRadius = 1.0;
+//        splitPaymentSubUIView.layer.shadowColor = UIColor(red: 0.514, green: 0.545, blue: 0.545, alpha: 1).CGColor;
+//        splitPaymentSubUIView.layer.shadowOffset = CGSizeMake(5, 5);
+//        splitPaymentSubUIView.layer.shadowOpacity = 1;
+//        splitPaymentSubUIView.layer.shadowRadius = 1.0;
         
         // set font to all UISegmented Control
         var attr = NSDictionary(object: UIFont(name: "chalkduster", size: 16.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
-        
-        // add background to guestCheckUIView
-        guestCheckUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
-        guestCheckTotalUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
     }
     
     func setDefaultOnDidLoad(){
         
         // show or hide
         tipRateField.hidden = true
-        guestCheckUIView.hidden = true
+        splitPaymentSubUIView.hidden = true
+        foodBgk.hidden = true
         
         // set names
         tipLabel.text = "$0.00"

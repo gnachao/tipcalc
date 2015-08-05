@@ -31,10 +31,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-Jl-TJj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-Jl-TJj">
                                 <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="food.png" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-34-NUs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food.png" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-34-NUs">
                                 <rect key="frame" x="21" y="220" width="553" height="375"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfH-DH-73Y">
@@ -160,7 +160,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2a-aD-Y4Z">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2a-aD-Y4Z">
                                                 <rect key="frame" x="0.0" y="75" width="565" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
@@ -168,6 +168,9 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="xxa-Tq-EO7" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="77" id="5Fo-4U-vtm"/>
+                                            <constraint firstItem="W2a-aD-Y4Z" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="75" id="5LE-eK-ziC"/>
+                                            <constraint firstAttribute="bottom" secondItem="W2a-aD-Y4Z" secondAttribute="bottom" constant="24" id="B2U-5O-Fxt"/>
+                                            <constraint firstItem="W2a-aD-Y4Z" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" id="B72-Ss-Czb"/>
                                             <constraint firstItem="9v9-eC-WEm" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="74.5" id="Hmv-Ct-egv"/>
                                             <constraint firstItem="WDP-Uy-yIu" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" constant="8" id="Q2U-9Y-rIM"/>
                                             <constraint firstAttribute="bottom" secondItem="xxa-Tq-EO7" secondAttribute="bottom" constant="3" id="SEq-fF-i7T"/>
@@ -184,6 +187,7 @@
                                             <constraint firstAttribute="trailing" secondItem="9A2-J0-ONG" secondAttribute="trailing" constant="12" id="q3o-BI-Ilr"/>
                                             <constraint firstAttribute="bottom" secondItem="z00-LA-dVg" secondAttribute="bottom" constant="2" id="rbj-Wr-yIn"/>
                                             <constraint firstAttribute="trailing" secondItem="xxa-Tq-EO7" secondAttribute="trailing" constant="398" id="rye-87-FOL"/>
+                                            <constraint firstAttribute="trailing" secondItem="W2a-aD-Y4Z" secondAttribute="trailing" id="xmp-gF-DbU"/>
                                             <constraint firstItem="9A2-J0-ONG" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="5" id="zRE-u5-ARe"/>
                                         </constraints>
                                     </view>
@@ -283,7 +287,6 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqB-dE-Upp">
                                                 <rect key="frame" x="8" y="70" width="272" height="161"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="deviceWhite"/>
                                                 <string key="text">With 10% service:
 
 👤 : No split
@@ -304,7 +307,6 @@ Total per person (no tip) = $ 100.00
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvA-84-j40">
                                                 <rect key="frame" x="285" y="70" width="272" height="161"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <string key="text">With 👤❷ - 2 people split: 
 
 5% Service - Poor!
@@ -381,13 +383,21 @@ Total per person (no tip) = $ 100.00
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NfH-DH-73Y" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="50T-k7-63h"/>
+                            <constraint firstItem="SrN-Jl-TJj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="CT5-bd-cRh"/>
                             <constraint firstItem="tMg-gQ-ShD" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" constant="280" id="GhE-5X-lJj"/>
                             <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="tMg-gQ-ShD" secondAttribute="bottom" constant="20" id="H9i-wH-f4T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kbJ-6Q-shh" secondAttribute="trailing" constant="-18" id="HqO-uS-C8W"/>
+                            <constraint firstItem="3rR-34-NUs" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" constant="200" id="LSH-vf-JU5"/>
+                            <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="3rR-34-NUs" secondAttribute="bottom" constant="5" id="T7K-Ni-svp"/>
                             <constraint firstItem="kbJ-6Q-shh" firstAttribute="top" secondItem="NfH-DH-73Y" secondAttribute="bottom" constant="8" id="Tj5-fg-0Yf"/>
                             <constraint firstItem="tMg-gQ-ShD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="VXP-Lo-T8d"/>
                             <constraint firstItem="kbJ-6Q-shh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="eP1-vP-6On"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3rR-34-NUs" secondAttribute="trailing" constant="10" id="eUF-7u-fOa"/>
                             <constraint firstItem="NfH-DH-73Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="3" id="ebH-q6-DDx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SrN-Jl-TJj" secondAttribute="trailing" constant="-16" id="fo4-YZ-xMQ"/>
+                            <constraint firstItem="3rR-34-NUs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="5" id="ggS-ga-9a0"/>
+                            <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="SrN-Jl-TJj" secondAttribute="bottom" constant="-20" id="if6-9D-JgI"/>
+                            <constraint firstItem="SrN-Jl-TJj" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" id="nQU-IQ-XOW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tMg-gQ-ShD" secondAttribute="trailing" constant="-16" id="tYu-fG-peh"/>
                             <constraint firstItem="NfH-DH-73Y" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" constant="19" id="whj-Lc-xey"/>
                         </constraints>
@@ -397,13 +407,25 @@ Total per person (no tip) = $ 100.00
                     </view>
                     <connections>
                         <outlet property="billField" destination="EYV-du-ShP" id="2cR-zY-2dP"/>
-                        <outlet property="guestCheckTotalUIView" destination="5wT-82-YHw" id="Ypf-K3-ULF"/>
-                        <outlet property="guestCheckUIView" destination="TvC-Oa-1r4" id="dHc-8Z-9fX"/>
+                        <outlet property="billTotalUIView" destination="NfH-DH-73Y" id="zpn-0K-ukR"/>
+                        <outlet property="foodBgk" destination="3rR-34-NUs" id="F7I-eK-t0E"/>
+                        <outlet property="serviceLabel" destination="9v9-eC-WEm" id="P4G-tM-p4i"/>
+                        <outlet property="splitCalculationTextView" destination="BqB-dE-Upp" id="ZNo-aE-XiV"/>
+                        <outlet property="splitPaymentSubUIView" destination="TvC-Oa-1r4" id="LT5-Su-Dzu"/>
+                        <outlet property="splitPaymentUIView" destination="tMg-gQ-ShD" id="TeW-3e-JHG"/>
+                        <outlet property="splitSegment" destination="9xM-Jm-DX2" id="SBg-4Q-X9j"/>
                         <outlet property="tipLabel" destination="xxa-Tq-EO7" id="57Q-Ru-aJg"/>
+                        <outlet property="tipPerPerson" destination="av6-JV-C4i" id="5U7-DG-HnV"/>
                         <outlet property="tipRateButton" destination="Geh-ky-jJX" id="kZI-EY-ZDK"/>
+                        <outlet property="tipRateCalculationTextView" destination="HvA-84-j40" id="fr9-or-mPH"/>
                         <outlet property="tipRateField" destination="q6X-VC-bRS" id="0rm-sn-gGI"/>
                         <outlet property="tipRateSegment" destination="hfW-ER-j32" id="Pxf-rR-oVJ"/>
                         <outlet property="totalLabel" destination="WDP-Uy-yIu" id="Ss2-UK-C1O"/>
+                        <outlet property="totalPaymentLine" destination="W2a-aD-Y4Z" id="JMD-4s-XeF"/>
+                        <outlet property="totalPaymentSubUIView" destination="5wT-82-YHw" id="cqT-Nl-RuB"/>
+                        <outlet property="totalPaymentUIView" destination="kbJ-6Q-shh" id="Kkf-xA-YIN"/>
+                        <outlet property="totalPerPerson" destination="7e4-8V-f71" id="Oqd-pO-xMr"/>
+                        <outlet property="totalPerPersonExcudeTip" destination="ltV-28-UBs" id="Kls-Le-hhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
