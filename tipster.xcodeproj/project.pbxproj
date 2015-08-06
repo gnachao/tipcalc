@@ -20,6 +20,7 @@
 		0E7A0FDE1B6F485B00F7E64A /* TornPaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FDD1B6F485B00F7E64A /* TornPaper.png */; };
 		0E7A0FE21B6F6AB000F7E64A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FE11B6F6AB000F7E64A /* background.png */; };
 		0E7A0FE41B6F6AB800F7E64A /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7A0FE31B6F6AB800F7E64A /* food.png */; };
+		0E9B12C91B7207160085F759 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E9B12C81B71ED240085F759 /* ArchitectsDaughter.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 				0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */,
 				0E7A0FBB1B6D492200F7E64A /* Images.xcassets in Resources */,
 				0E7A0FDC1B6F39CD00F7E64A /* TornPaper1.png in Resources */,
+				0E9B12C91B7207160085F759 /* ArchitectsDaughter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
