@@ -32,6 +32,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="tempField" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q6X-VC-bRS">
+                                <rect key="frame" x="70" y="280" width="459" height="41"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-Jl-TJj">
                                 <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                             </imageView>
@@ -39,7 +45,7 @@
                                 <rect key="frame" x="21" y="220" width="553" height="375"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfH-DH-73Y">
-                                <rect key="frame" x="19" y="39" width="565" height="103"/>
+                                <rect key="frame" x="19" y="30" width="565" height="103"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$100.00" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="EYV-du-ShP">
                                         <rect key="frame" x="8" y="5" width="545" height="98"/>
@@ -71,32 +77,8 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbJ-6Q-shh">
-                                <rect key="frame" x="19" y="150" width="565" height="141"/>
+                                <rect key="frame" x="19" y="141" width="565" height="140"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Geh-ky-jJX">
-                                        <rect key="frame" x="468" y="3" width="97" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="M9Y-OL-Vri"/>
-                                            <constraint firstAttribute="height" constant="40" id="XyU-xd-T0i"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <state key="normal" title="tipButton">
-                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setCustomRate:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rg3-9J-WcZ"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="tipRateField" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q6X-VC-bRS">
-                                        <rect key="frame" x="474" y="8" width="82" height="30"/>
-                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="tipRateFieldEditingChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Oom-0d-kSK"/>
-                                        </connections>
-                                    </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hfW-ER-j32">
                                         <rect key="frame" x="0.0" y="0.0" width="565" height="41"/>
                                         <constraints>
@@ -113,11 +95,11 @@
                                         <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK3-AW-OJG">
-                                        <rect key="frame" x="0.0" y="40" width="565" height="2"/>
+                                        <rect key="frame" x="0.0" y="40" width="565" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wT-82-YHw">
-                                        <rect key="frame" x="0.0" y="41" width="565" height="100"/>
+                                        <rect key="frame" x="0.0" y="41" width="565" height="99"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Payment with Tip:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9A2-J0-ONG">
                                                 <rect key="frame" x="8" y="2" width="176" height="24"/>
@@ -137,18 +119,18 @@
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCu-Bh-Hgq">
-                                                <rect key="frame" x="0.0" y="26" width="565" height="1"/>
+                                                <rect key="frame" x="0.0" y="26" width="565" height="0.0"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$110.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-Uy-yIu">
-                                                <rect key="frame" x="8" y="1" width="545" height="90"/>
+                                                <rect key="frame" x="8" y="1" width="545" height="89"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="52"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Tip:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z00-LA-dVg">
-                                                <rect key="frame" x="8" y="77" width="59" height="21"/>
+                                                <rect key="frame" x="8" y="76" width="59" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="59" id="On5-CV-0VT"/>
                                                 </constraints>
@@ -157,7 +139,7 @@
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 10.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Tq-EO7">
-                                                <rect key="frame" x="69" y="77" width="98" height="20"/>
+                                                <rect key="frame" x="69" y="76" width="98" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="98" id="bgZ-da-kWk"/>
                                                 </constraints>
@@ -167,13 +149,13 @@
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5% Service" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v9-eC-WEm">
-                                                <rect key="frame" x="175" y="74.5" width="378" height="25.5"/>
+                                                <rect key="frame" x="175" y="73" width="378" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2a-aD-Y4Z">
-                                                <rect key="frame" x="0.0" y="75" width="565" height="1"/>
+                                                <rect key="frame" x="0.0" y="75" width="565" height="0.0"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                         </subviews>
@@ -214,7 +196,6 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5wT-82-YHw" secondAttribute="bottom" id="0Tg-V3-lRO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Geh-ky-jJX" secondAttribute="trailing" id="56M-sl-Yft"/>
                                     <constraint firstAttribute="trailing" secondItem="5wT-82-YHw" secondAttribute="trailing" id="5uA-0c-whd"/>
                                     <constraint firstAttribute="bottom" secondItem="IK3-AW-OJG" secondAttribute="bottom" constant="99" id="ES7-Q7-bK6"/>
                                     <constraint firstItem="IK3-AW-OJG" firstAttribute="leading" secondItem="kbJ-6Q-shh" secondAttribute="leading" id="Nup-2G-1BA"/>
@@ -224,12 +205,11 @@
                                     <constraint firstItem="5wT-82-YHw" firstAttribute="leading" secondItem="kbJ-6Q-shh" secondAttribute="leading" id="pob-33-coQ"/>
                                     <constraint firstAttribute="trailing" secondItem="IK3-AW-OJG" secondAttribute="trailing" id="sHq-gV-DxO"/>
                                     <constraint firstItem="5wT-82-YHw" firstAttribute="top" secondItem="hfW-ER-j32" secondAttribute="bottom" constant="1" id="uR0-JK-wwm"/>
-                                    <constraint firstItem="Geh-ky-jJX" firstAttribute="top" secondItem="kbJ-6Q-shh" secondAttribute="top" constant="3" id="ucR-Vc-i65"/>
                                     <constraint firstItem="hfW-ER-j32" firstAttribute="leading" secondItem="kbJ-6Q-shh" secondAttribute="leading" id="wud-l5-Dih"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMg-gQ-ShD">
-                                <rect key="frame" x="18" y="300" width="565" height="280"/>
+                                <rect key="frame" x="18" y="290" width="565" height="300"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9xM-Jm-DX2">
                                         <rect key="frame" x="0.0" y="0.0" width="565" height="41"/>
@@ -254,7 +234,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvC-Oa-1r4">
-                                        <rect key="frame" x="0.0" y="41" width="565" height="239"/>
+                                        <rect key="frame" x="0.0" y="41" width="565" height="259"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Split" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buc-t5-c2M">
                                                 <rect key="frame" x="8" y="0.0" width="549" height="32"/>
@@ -302,7 +282,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqB-dE-Upp">
-                                                <rect key="frame" x="8" y="70" width="272" height="161"/>
+                                                <rect key="frame" x="8" y="70" width="272" height="181"/>
                                                 <string key="text">With 10% service:
 
 👤 : No split
@@ -324,7 +304,7 @@ Total per person (no tip) = $ 100.00
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvA-84-j40">
-                                                <rect key="frame" x="285" y="70" width="272" height="161"/>
+                                                <rect key="frame" x="285" y="70" width="272" height="181"/>
                                                 <string key="text">With 👤❷ - 2 people split: 
 
 5% Service - Poor!
@@ -413,7 +393,7 @@ Total per person (no tip) = $ 100.00
                             <constraint firstItem="kbJ-6Q-shh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="3" id="SRc-bv-b6O"/>
                             <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="3rR-34-NUs" secondAttribute="bottom" constant="5" id="T7K-Ni-svp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tMg-gQ-ShD" secondAttribute="trailing" constant="1" id="VUK-dm-gZj"/>
-                            <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="tMg-gQ-ShD" secondAttribute="bottom" constant="20" id="YHm-ib-4fF"/>
+                            <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="tMg-gQ-ShD" secondAttribute="bottom" constant="10" id="YHm-ib-4fF"/>
                             <constraint firstItem="tMg-gQ-ShD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="2" id="amn-gN-A9v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3rR-34-NUs" secondAttribute="trailing" constant="10" id="eUF-7u-fOa"/>
                             <constraint firstItem="NfH-DH-73Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="3" id="ebH-q6-DDx"/>
@@ -422,7 +402,7 @@ Total per person (no tip) = $ 100.00
                             <constraint firstItem="xV7-lQ-maf" firstAttribute="top" secondItem="SrN-Jl-TJj" secondAttribute="bottom" constant="-20" id="if6-9D-JgI"/>
                             <constraint firstItem="kbJ-6Q-shh" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="n3o-h4-d81"/>
                             <constraint firstItem="SrN-Jl-TJj" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" id="nQU-IQ-XOW"/>
-                            <constraint firstItem="NfH-DH-73Y" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" constant="19" id="whj-Lc-xey"/>
+                            <constraint firstItem="NfH-DH-73Y" firstAttribute="top" secondItem="fPT-qz-61Q" secondAttribute="bottom" constant="10" id="whj-Lc-xey"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="zmz-R4-ePP" appends="YES" id="BTz-ky-Or4"/>
@@ -438,11 +418,10 @@ Total per person (no tip) = $ 100.00
                         <outlet property="splitPaymentSubUIView" destination="TvC-Oa-1r4" id="LT5-Su-Dzu"/>
                         <outlet property="splitPaymentUIView" destination="tMg-gQ-ShD" id="TeW-3e-JHG"/>
                         <outlet property="splitSegment" destination="9xM-Jm-DX2" id="SBg-4Q-X9j"/>
+                        <outlet property="tempField" destination="q6X-VC-bRS" id="qId-5x-hag"/>
                         <outlet property="tipLabel" destination="xxa-Tq-EO7" id="57Q-Ru-aJg"/>
                         <outlet property="tipPerPerson" destination="av6-JV-C4i" id="5U7-DG-HnV"/>
-                        <outlet property="tipRateButton" destination="Geh-ky-jJX" id="kZI-EY-ZDK"/>
                         <outlet property="tipRateCalculationTextView" destination="HvA-84-j40" id="fr9-or-mPH"/>
-                        <outlet property="tipRateField" destination="q6X-VC-bRS" id="0rm-sn-gGI"/>
                         <outlet property="tipRateSegment" destination="hfW-ER-j32" id="Pxf-rR-oVJ"/>
                         <outlet property="totalLabel" destination="WDP-Uy-yIu" id="Ss2-UK-C1O"/>
                         <outlet property="totalPaymentLine" destination="W2a-aD-Y4Z" id="JMD-4s-XeF"/>

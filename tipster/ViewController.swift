@@ -21,8 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalPaymentLine0: UIView!
     @IBOutlet weak var totalPaymentLine1: UIView!
     @IBOutlet weak var tipRateSegment: UISegmentedControl!
-    @IBOutlet weak var tipRateField: UITextField!
-    @IBOutlet weak var tipRateButton: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var serviceLabel: UILabel!
@@ -42,6 +40,8 @@ class ViewController: UIViewController {
     // images
     @IBOutlet weak var foodBgk: UIImageView!
     
+    @IBOutlet weak var tempField: UITextField!
+    
 
     override func viewDidLoad() {
         
@@ -49,6 +49,14 @@ class ViewController: UIViewController {
         
         setApearance()
         setDefaultOnDidLoad()
+        tipRateSegment.addTarget(self, action: "setTipRate", forControlEvents: UIControlEvents.AllEvents)
+        
+        createSegmentedControlButtonForLastIndex(16.0, segment: splitSegment, view: splitPaymentUIView, funcName: "setSplit")
+        createSegmentedControlButtonForLastIndex(16.0, segment: tipRateSegment, view: totalPaymentUIView, funcName: "setTipRate")
+        
+
+        
+
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
@@ -70,38 +78,42 @@ class ViewController: UIViewController {
         splitPaymentSubUIView.hidden = false
         splitPaymentSubUIView.moveInFromBottom(duration: 1.0, completionDelegate: nil)
         
+        
     }
     
+    // manually set tip rate
     @IBAction func setCustomRate(sender: AnyObject) {
-        tipRateSegment.selectedSegmentIndex = 5
-        tipRateField.becomeFirstResponder()
-        if (tipRateSegment.titleForSegmentAtIndex(5) == "●●●"){
-            tipRateField.text = ""
-            tipRateSegment.setTitle("", forSegmentAtIndex: 5)
-        } else {
-            let currentCustomRateStr = tipRateSegment.titleForSegmentAtIndex(5)?.stringByReplacingOccurrencesOfString("%", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            tipRateField.text = currentCustomRateStr
-        }
+//        tipRateSegment.selectedSegmentIndex = 5
+//        tipRateField.becomeFirstResponder()
+//        if (tipRateSegment.titleForSegmentAtIndex(5) == "●●●"){
+//            tipRateField.text = ""
+//            tipRateSegment.setTitle("", forSegmentAtIndex: 5)
+//        } else {
+//            let currentCustomRateStr = tipRateSegment.titleForSegmentAtIndex(5)?.stringByReplacingOccurrencesOfString("%", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+//            tipRateField.text = currentCustomRateStr
+//        }
+        
+        
     }
     
     @IBAction func tipRateFieldEditingChange(sender: AnyObject) {
-        if (tipRateField.text as NSString).length > 4 {
-           
-            
-        }
-        
-        tipRateSegment.setTitle(tipRateField.text + "%", forSegmentAtIndex: 5)
-        
-        switch (tipRateField.text as NSString).doubleValue {
-        case 0...24.99:
-            self.view.backgroundColor = UIColor.whiteColor()
-        case 25...49.99:
-            self.view.backgroundColor = UIColor(red: 0.933, green: 0.878, blue: 0.898, alpha: 1)
-        case 50...100.00:
-            self.view.backgroundColor = UIColor(red: 1, green: 0.882, blue: 0.725, alpha: 1)
-        default:
-            self.view.backgroundColor = UIColor(red: 1, green: 0.682, blue: 0.725, alpha: 1)
-        }
+//        if (tipRateField.text as NSString).length > 4 {
+//           
+//            
+//        }
+//        
+//        tipRateSegment.setTitle(tipRateField.text + "%", forSegmentAtIndex: 5)
+//        
+//        switch (tipRateField.text as NSString).doubleValue {
+//        case 0...24.99:
+//            self.view.backgroundColor = UIColor.whiteColor()
+//        case 25...49.99:
+//            self.view.backgroundColor = UIColor(red: 0.933, green: 0.878, blue: 0.898, alpha: 1)
+//        case 50...100.00:
+//            self.view.backgroundColor = UIColor(red: 1, green: 0.882, blue: 0.725, alpha: 1)
+//        default:
+//            self.view.backgroundColor = UIColor(red: 1, green: 0.682, blue: 0.725, alpha: 1)
+//        }
         
     }
 
@@ -128,6 +140,7 @@ class ViewController: UIViewController {
         // total payment : bkg
         totalPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         totalPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
+        tipRateSegment.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         // total payment : shadow
         totalPaymentSubUIView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
         totalPaymentSubUIView.layer.shadowOffset = CGSizeMake(5, 5)
@@ -148,6 +161,7 @@ class ViewController: UIViewController {
         // plit payment : background 
         splitPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         splitPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
+        splitSegment.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         // split payment : shadow
         splitPaymentSubUIView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
         splitPaymentSubUIView.layer.shadowOffset = CGSizeMake(5, 5)
@@ -161,37 +175,13 @@ class ViewController: UIViewController {
         splitPaymentLine.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
         splitPaymentLine.layer.borderWidth = 2
         
-//        totalPaymentSubUIView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).CGColor
-//        totalPaymentSubUIView.layer.borderWidth = 1
-//        totalPaymentSubUIView.layer.cornerRadius = 5
-//        
-//        // total payment view tipRateSegment
-//        tipRateSegment.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
-//        tipRateSegment.layer.shadowOffset = CGSizeMake(5, 5)
-//        tipRateSegment.layer.shadowOpacity = 1
-//        tipRateSegment.layer.shadowRadius = 2
-        
-        
-        
-        
-        // split payment view bkg
-
-        
-        // add shadow to guestCheckUIView
-//        splitPaymentSubUIView.layer.shadowColor = UIColor(red: 0.514, green: 0.545, blue: 0.545, alpha: 1).CGColor;
-//        splitPaymentSubUIView.layer.shadowOffset = CGSizeMake(5, 5);
-//        splitPaymentSubUIView.layer.shadowOpacity = 1;
-//        splitPaymentSubUIView.layer.shadowRadius = 1.0;
-        
         // set font to all UISegmented Control
         var attr = NSDictionary(object: UIFont(name: "chalkduster", size: 16.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
     }
-    
     func setDefaultOnDidLoad(){
         
         // show or hide
-        tipRateField.hidden = true
         splitPaymentSubUIView.hidden = true
         foodBgk.hidden = true
         
@@ -199,8 +189,33 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         
-        tipRateButton.setTitle("", forState: UIControlState.Normal)
+        // set button width
     }
+    func setTipRate(){
+        tempField.becomeFirstResponder()
+        println("Click on payment total")
+    }
+    
+    func setSplit(){
+        println("you click on split!")
+    }
+    func createSegmentedControlButtonForLastIndex(margin: Float, segment: UISegmentedControl, view: UIView, funcName: Selector) {
+        // calculate button width, height, margin left
+        var bounds = UIScreen.mainScreen().bounds
+        var width = bounds.size.width - CGFloat(2 * margin)
+        let buttonWidth = width / CGFloat(segment.numberOfSegments) - 1
+        let buttonHeight = segment.frame.height
+        let buttonLeftMargin = buttonWidth * 5.0
+        
+        // create button
+        let button = UIButton()
+        button.frame = CGRectMake(buttonLeftMargin, 0, buttonWidth, buttonHeight)
+        button.layer.borderWidth = 2
+        view.addSubview(button)
+        
+        button.addTarget(self, action: funcName, forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
