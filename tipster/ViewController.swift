@@ -40,19 +40,18 @@ class ViewController: UIViewController {
     // images
     @IBOutlet weak var foodBgk: UIImageView!
     
-    @IBOutlet weak var tempField: UITextField!
-    
-
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         setApearance()
         setDefaultOnDidLoad()
-        tipRateSegment.addTarget(self, action: "setTipRate", forControlEvents: UIControlEvents.AllEvents)
+//        tipRateSegment.addTarget(self, action: "setTipRate", forControlEvents: UIControlEvents.AllEvents)
         
-        createSegmentedControlButtonForLastIndex(16.0, segment: splitSegment, view: splitPaymentUIView, funcName: "setSplit")
-        createSegmentedControlButtonForLastIndex(16.0, segment: tipRateSegment, view: totalPaymentUIView, funcName: "setTipRate")
+        tipRateSegment.allowEditingTitleLastIndex(16, view: totalPaymentUIView, unitOfSegmentItem: "%")
+//        tipRateSegment.createSegmentedControlButtonForLastIndex(16.0, view: totalPaymentUIView, "%")
+//        createSegmentedControlButtonForLastIndex(16.0, segment: splitSegment, view: splitPaymentUIView, funcName: "setSplit")
+//        createSegmentedControlButtonForLastIndex(16.0, segment: tipRateSegment, view: totalPaymentUIView, funcName: "setTipRate")
         
 
         
@@ -60,23 +59,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
-        resetSegmentedControlCustomIndexDefault()
-        var tipPercentages = [0.18, 0.2, 0.22, 0.0]
-        var tipPercentage = tipPercentages[tipRateSegment.selectedSegmentIndex]
-
-        var billAmount = (billField.text as NSString).doubleValue
-        var tip = billAmount * tipPercentage
-        var total = billAmount + tip
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+//        resetSegmentedControlCustomIndexDefault()
+//        var tipPercentages = [0.18, 0.2, 0.22, 0.0]
+//        var tipPercentage = tipPercentages[tipRateSegment.selectedSegmentIndex]
+//
+//        var billAmount = (billField.text as NSString).doubleValue
+//        var tip = billAmount * tipPercentage
+//        var total = billAmount + tip
+//        tipLabel.text = String(format: "$%.2f", tip)
+//        totalLabel.text = String(format: "$%.2f", total)
     }
     
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
-        resetSegmentedControlCustomIndexDefault()
-        
-        splitPaymentSubUIView.hidden = false
-        splitPaymentSubUIView.moveInFromBottom(duration: 1.0, completionDelegate: nil)
+//        resetSegmentedControlCustomIndexDefault()
+//        
+//        splitPaymentSubUIView.hidden = false
+//        splitPaymentSubUIView.moveInFromBottom(duration: 1.0, completionDelegate: nil)
         
         
     }
@@ -118,9 +117,9 @@ class ViewController: UIViewController {
     }
 
     func resetSegmentedControlCustomIndexDefault() {
-        if (tipRateSegment.titleForSegmentAtIndex(5) == "") || (tipRateSegment.titleForSegmentAtIndex(5) == "%"){
-            tipRateSegment.setTitle("●●●", forSegmentAtIndex: 3)
-        }
+//        if (tipRateSegment.titleForSegmentAtIndex(5) == "") || (tipRateSegment.titleForSegmentAtIndex(5) == "%"){
+//            tipRateSegment.setTitle("●●●", forSegmentAtIndex: 3)
+//        }
     }
     
     func setApearance(){
@@ -191,7 +190,7 @@ class ViewController: UIViewController {
         
         // set button width
     }
-    func setTipRate(){
+    func setTipRate(segment: UISegmentedControl){
         tempField.becomeFirstResponder()
         println("Click on payment total")
     }
@@ -199,22 +198,29 @@ class ViewController: UIViewController {
     func setSplit(){
         println("you click on split!")
     }
-    func createSegmentedControlButtonForLastIndex(margin: Float, segment: UISegmentedControl, view: UIView, funcName: Selector) {
-        // calculate button width, height, margin left
-        var bounds = UIScreen.mainScreen().bounds
-        var width = bounds.size.width - CGFloat(2 * margin)
-        let buttonWidth = width / CGFloat(segment.numberOfSegments) - 1
-        let buttonHeight = segment.frame.height
-        let buttonLeftMargin = buttonWidth * 5.0
-        
-        // create button
-        let button = UIButton()
-        button.frame = CGRectMake(buttonLeftMargin, 0, buttonWidth, buttonHeight)
-        button.layer.borderWidth = 2
-        view.addSubview(button)
-        
-        button.addTarget(self, action: funcName, forControlEvents: UIControlEvents.TouchUpInside)
-    }
+    
+//    func createSegmentedControlButtonForLastIndex(margin: Float, segment: UISegmentedControl, view: UIView, funcName: Selector) {
+//        // calculate button width, height, margin left
+//        var bounds = UIScreen.mainScreen().bounds
+//        var width = bounds.size.width - CGFloat(2 * margin)
+//        let buttonWidth = width / CGFloat(segment.numberOfSegments) - 1
+//        let buttonHeight = segment.frame.height
+//        let buttonLeftMargin = buttonWidth * 5.0
+//        
+//        // create button
+//        let button = UIButton()
+//        button.frame = CGRectMake(buttonLeftMargin, 0, buttonWidth, buttonHeight)
+//        button.layer.borderWidth = 2
+//        view.addSubview(button)
+//        
+//        // create temp text field
+//        let texfield = UITextField()
+//        texfield.frame = CGRectMake(buttonLeftMargin, 0, 1, 1)
+//        view.addSubview(texfield)
+//        
+//        
+//        //        button.addTarget(self, action: "buttonClick", forControlEvents: UIControlEvents.TouchUpInside)
+//    }
     
     
     override func didReceiveMemoryWarning() {

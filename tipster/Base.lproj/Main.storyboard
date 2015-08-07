@@ -32,12 +32,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="tempField" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q6X-VC-bRS">
-                                <rect key="frame" x="70" y="280" width="459" height="41"/>
-                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-Jl-TJj">
                                 <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                             </imageView>
@@ -418,7 +412,6 @@ Total per person (no tip) = $ 100.00
                         <outlet property="splitPaymentSubUIView" destination="TvC-Oa-1r4" id="LT5-Su-Dzu"/>
                         <outlet property="splitPaymentUIView" destination="tMg-gQ-ShD" id="TeW-3e-JHG"/>
                         <outlet property="splitSegment" destination="9xM-Jm-DX2" id="SBg-4Q-X9j"/>
-                        <outlet property="tempField" destination="q6X-VC-bRS" id="qId-5x-hag"/>
                         <outlet property="tipLabel" destination="xxa-Tq-EO7" id="57Q-Ru-aJg"/>
                         <outlet property="tipPerPerson" destination="av6-JV-C4i" id="5U7-DG-HnV"/>
                         <outlet property="tipRateCalculationTextView" destination="HvA-84-j40" id="fr9-or-mPH"/>

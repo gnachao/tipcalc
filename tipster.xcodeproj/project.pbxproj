@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E356AA51B741F8F009C95B2 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E356AA41B741F8F009C95B2 /* UISegmentedControl.swift */; };
+		0E356AA71B7470C6009C95B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E356AA61B7470C6009C95B2 /* String.swift */; };
 		0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E5021B70067600F566A6 /* daddysgirl.ttf */; };
 		0E58E5051B7046A200F566A6 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58E5041B7046A200F566A6 /* Transitions.swift */; };
 		0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A0FB31B6D492200F7E64A /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E356AA41B741F8F009C95B2 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
+		0E356AA61B7470C6009C95B2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0E58E5021B70067600F566A6 /* daddysgirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = daddysgirl.ttf; sourceTree = "<group>"; };
 		0E58E5041B7046A200F566A6 /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		0E7A0FAE1B6D492200F7E64A /* tipster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +121,8 @@
 				0E7A0FB51B6D492200F7E64A /* ViewController.swift */,
 				0E7A0FB71B6D492200F7E64A /* Main.storyboard */,
 				0E58E5041B7046A200F566A6 /* Transitions.swift */,
+				0E356AA41B741F8F009C95B2 /* UISegmentedControl.swift */,
+				0E356AA61B7470C6009C95B2 /* String.swift */,
 				0E7A0FBA1B6D492200F7E64A /* Images.xcassets */,
 				0E7A0FBC1B6D492200F7E64A /* LaunchScreen.xib */,
 				0E7A0FD71B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift */,
@@ -259,9 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E356AA71B7470C6009C95B2 /* String.swift in Sources */,
 				0E7A0FD81B6EAD3800F7E64A /* UISegmentedControlCustomizer.swift in Sources */,
 				0E7A0FB61B6D492200F7E64A /* ViewController.swift in Sources */,
 				0E58E5051B7046A200F566A6 /* Transitions.swift in Sources */,
+				0E356AA51B741F8F009C95B2 /* UISegmentedControl.swift in Sources */,
 				0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
