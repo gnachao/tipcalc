@@ -46,7 +46,8 @@
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="52"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="editingChanged" id="fyu-vR-gMI"/>
+                                            <action selector="billAmountEditingChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="cqq-i1-n6Q"/>
+                                            <action selector="billTextfieldTouchDown:" destination="vXZ-lx-hvc" eventType="touchDown" id="C38-p2-XAP"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill Total:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-e4-GY6">
@@ -87,6 +88,10 @@
                                             <segment title="●●●"/>
                                         </segments>
                                         <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="billAmountEditingChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="daL-4f-cdb"/>
+                                            <action selector="segmentValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="ofE-7j-yGd"/>
+                                        </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK3-AW-OJG">
                                         <rect key="frame" x="0.0" y="40" width="565" height="1"/>
@@ -106,7 +111,7 @@
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  👍👍👍👍👍" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-03-DnA">
-                                                <rect key="frame" x="185" y="2" width="368" height="24"/>
+                                                <rect key="frame" x="185" y="2" width="372" height="24"/>
                                                 <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -126,16 +131,18 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Tip:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z00-LA-dVg">
                                                 <rect key="frame" x="8" y="76" width="59" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="59" id="On5-CV-0VT"/>
+                                                    <constraint firstAttribute="height" constant="21" id="XQq-Aw-i5P"/>
+                                                    <constraint firstAttribute="width" constant="59" id="YWd-2E-ROI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 10.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Tq-EO7">
-                                                <rect key="frame" x="69" y="76" width="98" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10000.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xxa-Tq-EO7">
+                                                <rect key="frame" x="67" y="72" width="88" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="98" id="bgZ-da-kWk"/>
+                                                    <constraint firstAttribute="width" constant="88" id="OAY-UU-ZRn"/>
+                                                    <constraint firstAttribute="height" constant="26" id="vCH-Vs-50e"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -143,8 +150,8 @@
                                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5% Service" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v9-eC-WEm">
-                                                <rect key="frame" x="175" y="73" width="378" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="17"/>
+                                                <rect key="frame" x="153" y="73" width="404" height="25.5"/>
+                                                <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -155,33 +162,33 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="JEg-03-DnA" secondAttribute="trailing" constant="12" id="0Az-o8-L5V"/>
-                                            <constraint firstItem="JEg-03-DnA" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="2" id="0OJ-vG-S5V"/>
                                             <constraint firstItem="9A2-J0-ONG" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="2" id="17L-ST-XAf"/>
                                             <constraint firstItem="WDP-Uy-yIu" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="1" id="1Jp-y9-ywE"/>
+                                            <constraint firstItem="JEg-03-DnA" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="2" id="2u0-bN-Fyj"/>
                                             <constraint firstAttribute="trailing" secondItem="W2a-aD-Y4Z" secondAttribute="trailing" id="5hy-2N-rD6"/>
+                                            <constraint firstItem="JEg-03-DnA" firstAttribute="leading" secondItem="9A2-J0-ONG" secondAttribute="trailing" constant="1" id="67z-B5-R21"/>
                                             <constraint firstAttribute="trailing" secondItem="WDP-Uy-yIu" secondAttribute="trailing" constant="12" id="8fI-Ka-nPJ"/>
+                                            <constraint firstItem="WDP-Uy-yIu" firstAttribute="top" secondItem="JEg-03-DnA" secondAttribute="bottom" constant="-25" id="8hy-3K-vc5"/>
+                                            <constraint firstAttribute="bottom" secondItem="9v9-eC-WEm" secondAttribute="bottom" constant="0.5" id="AnQ-eo-pUZ"/>
                                             <constraint firstItem="W2a-aD-Y4Z" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" id="Ar6-Y5-onu"/>
                                             <constraint firstItem="9A2-J0-ONG" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" constant="8" id="ArF-lv-h1P"/>
-                                            <constraint firstAttribute="bottom" secondItem="xxa-Tq-EO7" secondAttribute="bottom" constant="3" id="C85-7n-v2v"/>
-                                            <constraint firstItem="JEg-03-DnA" firstAttribute="leading" secondItem="9A2-J0-ONG" secondAttribute="trailing" constant="1" id="CAJ-Od-tak"/>
-                                            <constraint firstAttribute="bottom" secondItem="z00-LA-dVg" secondAttribute="bottom" constant="2" id="F3D-6T-gVg"/>
+                                            <constraint firstItem="z00-LA-dVg" firstAttribute="top" secondItem="WDP-Uy-yIu" secondAttribute="bottom" constant="-14" id="EGm-dV-rQ7"/>
                                             <constraint firstItem="W2a-aD-Y4Z" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="75" id="IHl-do-ICK"/>
-                                            <constraint firstItem="xxa-Tq-EO7" firstAttribute="leading" secondItem="z00-LA-dVg" secondAttribute="trailing" constant="2" id="LWd-dF-C57"/>
+                                            <constraint firstItem="xxa-Tq-EO7" firstAttribute="top" secondItem="WDP-Uy-yIu" secondAttribute="bottom" constant="-18" id="IrZ-02-dIb"/>
                                             <constraint firstAttribute="bottom" secondItem="UCu-Bh-Hgq" secondAttribute="bottom" constant="73" id="PdE-Fj-ZJ7"/>
-                                            <constraint firstItem="9v9-eC-WEm" firstAttribute="leading" secondItem="xxa-Tq-EO7" secondAttribute="trailing" constant="8" id="PqS-5q-urB"/>
-                                            <constraint firstItem="9v9-eC-WEm" firstAttribute="top" secondItem="W2a-aD-Y4Z" secondAttribute="bottom" constant="-1.5" id="R3T-Gi-PRJ"/>
-                                            <constraint firstItem="z00-LA-dVg" firstAttribute="top" secondItem="W2a-aD-Y4Z" secondAttribute="bottom" constant="1" id="VGj-iX-Agc"/>
-                                            <constraint firstItem="UCu-Bh-Hgq" firstAttribute="top" secondItem="JEg-03-DnA" secondAttribute="bottom" id="ZfT-yy-M3j"/>
-                                            <constraint firstAttribute="trailing" secondItem="9v9-eC-WEm" secondAttribute="trailing" constant="12" id="aHr-hq-cXA"/>
-                                            <constraint firstAttribute="bottom" secondItem="9v9-eC-WEm" secondAttribute="bottom" id="aOL-mk-9Vy"/>
+                                            <constraint firstAttribute="trailing" secondItem="9v9-eC-WEm" secondAttribute="trailing" constant="8" id="RjJ-EF-2sv"/>
                                             <constraint firstItem="UCu-Bh-Hgq" firstAttribute="top" secondItem="9A2-J0-ONG" secondAttribute="bottom" id="bch-PP-is4"/>
+                                            <constraint firstAttribute="trailing" secondItem="JEg-03-DnA" secondAttribute="trailing" constant="8" id="d8a-p1-4bX"/>
                                             <constraint firstAttribute="trailing" secondItem="UCu-Bh-Hgq" secondAttribute="trailing" id="dUs-5h-gkt"/>
-                                            <constraint firstItem="xxa-Tq-EO7" firstAttribute="top" secondItem="W2a-aD-Y4Z" secondAttribute="bottom" constant="1" id="euF-zm-bLG"/>
+                                            <constraint firstItem="z00-LA-dVg" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" constant="8" id="e3q-uf-ui2"/>
+                                            <constraint firstItem="9v9-eC-WEm" firstAttribute="top" secondItem="WDP-Uy-yIu" secondAttribute="bottom" constant="-17" id="g8g-jb-sGE"/>
                                             <constraint firstItem="UCu-Bh-Hgq" firstAttribute="top" secondItem="5wT-82-YHw" secondAttribute="top" constant="26" id="hbI-lT-lKV"/>
+                                            <constraint firstItem="xxa-Tq-EO7" firstAttribute="leading" secondItem="z00-LA-dVg" secondAttribute="trailing" id="l04-3g-vpN"/>
                                             <constraint firstAttribute="bottom" secondItem="WDP-Uy-yIu" secondAttribute="bottom" constant="9" id="l7o-cx-6EL"/>
-                                            <constraint firstItem="z00-LA-dVg" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" constant="8" id="qdH-EM-nh9"/>
+                                            <constraint firstAttribute="bottom" secondItem="xxa-Tq-EO7" secondAttribute="bottom" constant="1" id="pHX-FC-rq8"/>
                                             <constraint firstItem="UCu-Bh-Hgq" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" id="rJW-M3-4Ww"/>
+                                            <constraint firstItem="9v9-eC-WEm" firstAttribute="leading" secondItem="xxa-Tq-EO7" secondAttribute="trailing" constant="-2" id="riX-8t-Yfw"/>
+                                            <constraint firstAttribute="bottom" secondItem="z00-LA-dVg" secondAttribute="bottom" constant="2" id="seQ-G0-xrR"/>
                                             <constraint firstAttribute="bottom" secondItem="W2a-aD-Y4Z" secondAttribute="bottom" constant="24" id="uwb-lC-djZ"/>
                                             <constraint firstItem="WDP-Uy-yIu" firstAttribute="leading" secondItem="5wT-82-YHw" secondAttribute="leading" constant="8" id="woS-mU-pTf"/>
                                         </constraints>
@@ -219,6 +226,9 @@
                                             <segment title="●●●"/>
                                         </segments>
                                         <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="billAmountEditingChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="HRz-RS-UFH"/>
+                                        </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-yX-FGe">
                                         <rect key="frame" x="0.0" y="39" width="565" height="2"/>
@@ -265,7 +275,7 @@
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total per person (no tip) " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L9D-DI-NAY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tip per person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L9D-DI-NAY">
                                                 <rect key="frame" x="377" y="27" width="180" height="21"/>
                                                 <fontDescription key="fontDescription" name="DaddysGirl" family="DaddysGirl" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
@@ -405,9 +415,11 @@ Total per person (no tip) = $ 100.00
                     <connections>
                         <outlet property="billField" destination="EYV-du-ShP" id="2cR-zY-2dP"/>
                         <outlet property="billTotalUIView" destination="NfH-DH-73Y" id="zpn-0K-ukR"/>
-                        <outlet property="foodBgk" destination="3rR-34-NUs" id="F7I-eK-t0E"/>
+                        <outlet property="foodBgk" destination="3rR-34-NUs" id="JJd-gR-IIJ"/>
                         <outlet property="serviceLabel" destination="9v9-eC-WEm" id="P4G-tM-p4i"/>
+                        <outlet property="serviceSymbolLabel" destination="JEg-03-DnA" id="k7N-Pf-FX5"/>
                         <outlet property="splitCalculationTextView" destination="BqB-dE-Upp" id="ZNo-aE-XiV"/>
+                        <outlet property="splitLabel" destination="Buc-t5-c2M" id="ElT-hL-QLS"/>
                         <outlet property="splitPaymentLine" destination="ZaB-yX-FGe" id="HbL-bv-kN0"/>
                         <outlet property="splitPaymentSubUIView" destination="TvC-Oa-1r4" id="LT5-Su-Dzu"/>
                         <outlet property="splitPaymentUIView" destination="tMg-gQ-ShD" id="TeW-3e-JHG"/>

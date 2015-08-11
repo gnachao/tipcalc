@@ -12,23 +12,22 @@
 
 import UIKit
 
-let slider = UISlider()
-let minSlide: Float = 1
-let maxSlide: Float = 100
-
-let texfield = UITextField()
-let button = UIButton()
-var defaultLastSegmentTitle: String? = ""
-var unit: String = ""
+var indexToChange: Int = 0
+var defaultTitle: String? = ""
 
 extension UISegmentedControl {
 
-    func allowEditingTitleLastIndex(margin: Float, view: UIView, unitOfSegmentItem: String) {
-        // set unit
-        unit = unitOfSegmentItem
+    func allowEditingTitleLastIndex(view: UIView, margin: Float, texfield: UITextField, button: UIButton, unitOfSegmentItem: String){
+        indexToChange = self.numberOfSegments - 1
+        allowEditingTitle(view, margin: margin, texfield: texfield, button: button, changeAtIndex: indexToChange)
+    
+    }
+    
+    func allowEditingTitle(view: UIView, margin: Float, texfield: UITextField, button: UIButton, changeAtIndex: Int) {
         
-        // get default last segment title
-        defaultLastSegmentTitle = self.titleForSegmentAtIndex(self.numberOfSegments - 1)
+        // set init values
+        indexToChange = changeAtIndex
+        defaultTitle = self.titleForSegmentAtIndex(changeAtIndex)
         
         // get device width
         var bounds = UIScreen.mainScreen().bounds
@@ -44,98 +43,45 @@ extension UISegmentedControl {
         
         // create button
         button.frame = CGRectMake(buttonLeftMargin, 0, buttonWidth, buttonHeight)
-        button.layer.borderWidth = 2
+        button.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0).CGColor
         view.addSubview(button)
         
         // create temp text field
         texfield.frame = CGRectMake(buttonLeftMargin, 0, 1, 1)
         view.addSubview(texfield)
-        
-        button.addTarget(self, action: "buttonClick", forControlEvents: UIControlEvents.TouchUpInside)
-        texfield.addTarget(self, action: "textfieldEditingChange", forControlEvents: UIControlEvents.EditingChanged)
     }
     
-    func buttonClick(){
+    func buttonClick(texfield: UITextField, slider: UISlider, unit: String){
+        var textfieldValue: NSString = "0"
+        
         // segmented control to select last index
-        self.selectedSegmentIndex = self.numberOfSegments - 1
-        
-        // keyboard : decimal keypad
-        texfield.keyboardType = UIKeyboardType.DecimalPad
-        texfield.keyboardAppearance = UIKeyboardAppearance.Dark
-        
-        // keyboard : done button
-        addDoneButton(texfield)
-        
-        // focus on textfield
-        texfield.becomeFirstResponder()
+        self.selectedSegmentIndex = indexToChange
         
         // set textfield equal to segment last index title exclude %
-        let currentCustomRateStr = self.titleForSegmentAtIndex(self.numberOfSegments - 1)?.stringByReplacingOccurrencesOfString(unit, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        if currentCustomRateStr == defaultLastSegmentTitle {
-            self.setTitle("", forSegmentAtIndex: self.numberOfSegments - 1)
+        let currentCustomRateStr = self.titleForSegmentAtIndex(indexToChange)?.stringByReplacingOccurrencesOfString(unit, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        if currentCustomRateStr == defaultTitle {
+            self.setTitle("", forSegmentAtIndex: indexToChange)
         } else {
             texfield.text = currentCustomRateStr
         }
+        
+        textfieldValue = texfield.text
+        slider.setValue(textfieldValue.floatValue, animated: true)
+        
     }
     
-    func textfieldEditingChange(){
+    func textfieldEditingChange(texfield: UITextField, slider: UISlider, unit: String, max: Int){
         var textfieldValue: NSString = "0"
-        slider.minimumValue = minSlide
-        slider.maximumValue = maxSlide
         
         if texfield.text.length > 0 {
-            if texfield.text.toInt() > 100 {
-            let currentCustomRateStr = self.titleForSegmentAtIndex(self.numberOfSegments - 1)?.stringByReplacingOccurrencesOfString(unit, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            if texfield.text.toInt() > max {
+            let currentCustomRateStr = self.titleForSegmentAtIndex(indexToChange)?.stringByReplacingOccurrencesOfString(unit, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
                 texfield.text = currentCustomRateStr
             }
         }
         
         textfieldValue = texfield.text
         slider.setValue(textfieldValue.floatValue, animated: true)
-        self.setTitle(texfield.text + unit, forSegmentAtIndex: self.numberOfSegments - 1)
-    }
-    
-    func done(){
-        if texfield.text == "" || self.titleForSegmentAtIndex(self.numberOfSegments - 1) == "" || self.titleForSegmentAtIndex(self.numberOfSegments - 1) == unit {
-            self.setTitle(defaultLastSegmentTitle, forSegmentAtIndex: self.numberOfSegments - 1)
-        }
-        texfield.resignFirstResponder()
-    }
-    
-    func slidToChangeValue(){
-        slider.minimumValue = minSlide
-        slider.maximumValue = maxSlide
-        
-        var currentValue = Int(slider.value)
-        self.setTitle("\(currentValue)" + unit, forSegmentAtIndex: self.numberOfSegments - 1)
-    }
-    
-    func addDoneButton(textField: UITextField) -> Bool {
-        
-        // Create a button bar for the number pad
-        let keyboardDoneButtonView = UIToolbar()
-        keyboardDoneButtonView.barStyle = UIBarStyle.BlackTranslucent
-        
-        // Setup the buttons to be put in the system.
-        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let doneItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("done") )
-        
-        // slider
-        let bounds = UIScreen.mainScreen().bounds
-        let deviceWidth = bounds.size.width
-        slider.frame.size.width = CGFloat(deviceWidth - 75)
-        slider.addTarget(self, action: "slidToChangeValue", forControlEvents: UIControlEvents.ValueChanged)
-        
-        var items = NSMutableArray()
-        items.addObject(UIBarButtonItem(customView: slider))
-        items.addObject(flexSpace)
-        items.addObject(doneItem)
-        
-        keyboardDoneButtonView.items = items as [AnyObject]
-        keyboardDoneButtonView.sizeToFit()
-        
-        textField.inputAccessoryView = keyboardDoneButtonView
-        
-        return true
+        self.setTitle(texfield.text + unit, forSegmentAtIndex: indexToChange)
     }
 }
