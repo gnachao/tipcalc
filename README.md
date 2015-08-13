@@ -29,4 +29,5 @@ Features wanted to implemeted in the next version:
 * [ ] User can rotate phone to view realistic bill (paper like)
 * [ ] User can email the bill to one email or a bunch for referrences 
 
+![alt tag](https://github.com/gnachao/tipcalc/blob/master/tipcalc.gif)
 
