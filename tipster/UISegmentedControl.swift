@@ -42,7 +42,7 @@ extension UISegmentedControl {
         let buttonLeftMargin = buttonWidth * CGFloat(self.numberOfSegments - 1)
         
         // create button
-        button.frame = CGRectMake(buttonLeftMargin, 0, buttonWidth, buttonHeight)
+        button.frame = CGRectMake(buttonLeftMargin, self.layer.frame.origin.x + self.frame.size.height, buttonWidth, buttonHeight)
         button.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0).CGColor
         view.addSubview(button)
         

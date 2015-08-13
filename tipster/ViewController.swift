@@ -13,19 +13,16 @@ class ViewController: UIViewController {
     // bill total 
     @IBOutlet weak var billTotalUIView: UIView!
     @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var billTotalLabel: UILabel!
     
     // total payment
     @IBOutlet weak var totalPaymentUIView: UIView!
     @IBOutlet weak var totalPaymentSubUIView: UIView!
-    @IBOutlet weak var totalPaymentLine: UIView!
-    @IBOutlet weak var totalPaymentLine0: UIView!
-    @IBOutlet weak var totalPaymentLine1: UIView!
     @IBOutlet weak var tipRateSegment: UISegmentedControl!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var totalPaymentHeaderLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var serviceSymbolLabel: UILabel!
-    
     
     // split payment
     @IBOutlet weak var splitPaymentUIView: UIView!
@@ -34,8 +31,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalPerPerson: UILabel!
     @IBOutlet weak var tipPerPerson: UILabel!
     @IBOutlet weak var totalPerPersonExcudeTip: UILabel!
-    @IBOutlet weak var splitCalculationTextView: UITextView!
-    @IBOutlet weak var tipRateCalculationTextView: UITextView!
     @IBOutlet weak var splitPaymentLine: UIView!
     @IBOutlet weak var splitLabel: UILabel!
     
@@ -51,8 +46,15 @@ class ViewController: UIViewController {
     var setSplitTitleAtIndex: Int = 0
     var clickedButtonName: String = ""
     var clickedButtonNum: Int = 0
+    var keyboardScreen = UILabel()
     
-    
+    // animation properties
+    var tipOldStr: String? = ""
+    var tipSymbolOldStr: String? = ""
+    var totalOldStr: String? = ""
+    var totalHeaderOldStr: String? = ""
+    var splitOldStr: String? = ""
+    var splitHeaderOldStr: String? = ""
     
     // images
     @IBOutlet weak var foodBgk: UIImageView!
@@ -70,13 +72,21 @@ class ViewController: UIViewController {
         calculate()
         setDefaulfTitleTipRateLastIndex()
         setDefaulfTitleSplitLastIndex()
+        totalPaymentValueChangeAnimation()
+        splitPaymentValueChangeAnimation()
     }
     
-    @IBAction func segmentValueChanged(sender: AnyObject) {
+    @IBAction func tipRateChanged(sender: AnyObject) {
         if (tipRateSegment.selectedSegmentIndex != setTipRateTitleAtIndex) || (splitSegment.selectedSegmentIndex != setSplitTitleAtIndex) {
             view.endEditing(true)
         }
         clickedButtonNum = 0
+        totalPaymentValueChangeAnimation()
+    }
+    
+    @IBAction func splitChanged(sender: AnyObject) {
+        clickedButtonNum = 0
+        splitPaymentValueChangeAnimation()
     }
     
     @IBAction func billTextfieldTouchDown(sender: UITextField) {
@@ -94,7 +104,7 @@ class ViewController: UIViewController {
         // remove $ sign
         billField.text = billField.text.stringByReplacingOccurrencesOfString("$", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        animation()
+        scenarioTransition()
         
         // calculate total and tip
         var tipPercentages = [0.05, 0.1, 0.15, 0.2, 0.25, 0.0]
@@ -106,7 +116,44 @@ class ViewController: UIViewController {
         var total = billAmount + tip
         
         totalLabel.text = String(format: "$%.2f", total)
-        tipLabel.text = String(format: "$%.2f", tip)
+        tipLabel.text = String(format: "TIP: $%.2f", tip)
+        
+        // update total payment header label
+        totalPaymentHeaderLabel.text = "Total Payment with " + "\(tipRateSegment.titleForSegmentAtIndex(tipRateSegment.selectedSegmentIndex)!) " + "Tip"
+        
+        // update service comment
+        let tipRateSelected = convertSegmentTitleAtIndexToDouble(tipRateSegment, index: tipRateSegment.selectedSegmentIndex, unit: "%", defaultTitleAtIndex: defaulfTitleTipRateLastIndex)
+        switch tipRateSelected {
+        case 0...0.05:
+            let color = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            serviceSymbolLabel.text = "Awful :: 👎🏻"
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        case 0.06...0.1:
+            let color = UIColor(red:0.55, green:0.41, blue:0.08, alpha:1.0)
+            serviceSymbolLabel.text = "OK :: 👌🏻"
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        case 0.11...0.15:
+            let color = UIColor(red:0.21, green:0.39, blue:0.55, alpha:1.0)
+            serviceSymbolLabel.text = "Good! :: 👍🏻"
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        case 0.16...0.20:
+            let color = UIColor(red:0.22, green:0.56, blue:0.56, alpha:1.0)
+            serviceSymbolLabel.text = "Awesome :: 👍🏻👍🏻"
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        case 0.21...1.0:
+            let color = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.0)
+            serviceSymbolLabel.text = "Excellent! :: 👍🏻👍🏻👍🏻"
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        default:
+            let color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            serviceSymbolLabel.textColor = color
+            serviceSymbolLabel.glowEffect(color)
+        }
         
         // calculate split
         var splits = [1, 2, 3, 4, 5, 1]
@@ -120,49 +167,11 @@ class ViewController: UIViewController {
         // update split
         splitLabel.text = "\(splits[splitSegment.selectedSegmentIndex])" + " People Split"
         
-        // update service comment
-        serviceLabel.text = tipRateSegment.titleForSegmentAtIndex(tipRateSegment.selectedSegmentIndex)! + " Service "
-        let tipRateSelected = convertSegmentTitleAtIndexToDouble(tipRateSegment, index: tipRateSegment.selectedSegmentIndex, unit: "%", defaultTitleAtIndex: defaulfTitleTipRateLastIndex)
-        println("\(tipRateSelected)")
-        switch tipRateSelected {
-        case 0...0.05:
-            serviceLabel.text = serviceLabel.text! + "Poor"
-            serviceLabel.textColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
-            serviceSymbolLabel.text = "👎🏻"
-        case 0.06...0.1:
-            serviceLabel.text = serviceLabel.text! + "Fair"
-            serviceLabel.textColor = UIColor(red: 1, green: 0.3, blue: 0.14, alpha: 1)
-            serviceSymbolLabel.text = "👌🏻"
-        case 0.11...0.15:
-            serviceLabel.text = serviceLabel.text! + "Good!"
-            serviceLabel.textColor = UIColor(red:0.21, green:0.39, blue:0.55, alpha:1.0)
-            serviceSymbolLabel.text = "👍🏻"
-        case 0.16...0.20:
-            serviceLabel.text = serviceLabel.text! + "Great!"
-            serviceLabel.textColor = UIColor(red:0.22, green:0.56, blue:0.56, alpha:1.0)
-            serviceSymbolLabel.text = "👍🏻👍🏻"
-        case 0.21...0.25:
-            serviceLabel.text = serviceLabel.text! + "Excellent!"
-            serviceLabel.textColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.0)
-            serviceSymbolLabel.text = "👍🏻👍🏻👍🏻"
-        case 0.26...0.3:
-            serviceLabel.text = serviceLabel.text! + "Perfect!"
-            serviceLabel.textColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.0)
-            serviceSymbolLabel.text = "👍🏻👍🏻👍🏻👍🏻"
-        case 0.31...1:
-            serviceLabel.text = serviceLabel.text! + "Perfect!"
-            serviceLabel.textColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.0)
-            serviceSymbolLabel.text = "👍🏻👍🏻👍🏻👍🏻👍🏻"
-        default:
-            serviceLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-  
-        }
-        
         // add $ sign back
         billField.text = "$" + billField.text
     }
     
-    func animation(){
+    func scenarioTransition(){
         let billTotalStr = billField.text.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         if billTotalStr.length > 0 {
             if totalPaymentUIView.hidden == true {
@@ -176,18 +185,6 @@ class ViewController: UIViewController {
             foodBgk.pushFromTop(duration: 1.0, completionDelegate: nil)
             foodBgk.hidden = true
             
-            tipLabel.hidden = true
-            tipLabel.pushFromTop(duration: 1.0, completionDelegate: nil)
-            tipLabel.hidden = false
-            
-            serviceLabel.hidden = true
-            serviceLabel.revealFromLeft(duration: 1.0, completionDelegate: nil)
-            serviceLabel.hidden = false
-            
-            serviceSymbolLabel.hidden = true
-            serviceSymbolLabel.revealFromLeft(duration: 1.0, completionDelegate: nil)
-            serviceSymbolLabel.hidden = false
-            
         } else {
             totalPaymentUIView.revealFromLeft(duration: 1.0, completionDelegate: nil)
             totalPaymentUIView.hidden = true
@@ -196,6 +193,59 @@ class ViewController: UIViewController {
             foodBgk.pushFromBottom(duration: 1.0, completionDelegate: nil)
             foodBgk.hidden = false
         }
+    }
+    
+    func totalPaymentValueChangeAnimation(){
+    
+        if tipLabel.text != tipOldStr {
+            tipLabel.hidden = true
+            tipLabel.pushFromTop(duration: 1.0, completionDelegate: nil)
+            tipLabel.hidden = false
+        }
+        if serviceSymbolLabel.text != tipSymbolOldStr {
+            serviceSymbolLabel.hidden = true
+            serviceSymbolLabel.flipFromLeft(1.0)
+            serviceSymbolLabel.hidden = false
+        }
+        if totalLabel.text != totalOldStr {
+            totalLabel.hidden = true
+            totalLabel.moveInFromTop(duration: 0.3, completionDelegate: nil)
+            totalLabel.hidden = false
+        }
+        if totalPaymentHeaderLabel.text != totalHeaderOldStr {
+            totalPaymentHeaderLabel.revealFromLeft(duration: 0.5, completionDelegate: nil)
+        }
+        
+        // update old value
+        tipOldStr = tipLabel.text
+        tipSymbolOldStr = serviceSymbolLabel.text
+        totalOldStr = totalLabel.text
+        totalHeaderOldStr = totalPaymentHeaderLabel.text
+    }
+    
+    func splitPaymentValueChangeAnimation(){
+        let splitNewStr = totalPerPerson.text! + tipPerPerson.text! + totalPerPersonExcudeTip.text!
+        
+        if splitNewStr != splitOldStr {
+            totalPerPerson.hidden = true
+            totalPerPerson.pushFromTop(duration: 0.4, completionDelegate: nil)
+            totalPerPerson.hidden = false
+            
+            tipPerPerson.hidden = true
+            tipPerPerson.pushFromTop(duration: 0.4, completionDelegate: nil)
+            tipPerPerson.hidden = false
+            
+            totalPerPersonExcudeTip.hidden = true
+            totalPerPersonExcudeTip.pushFromTop(duration: 0.4, completionDelegate: nil)
+            totalPerPersonExcudeTip.hidden = false
+        }
+        if splitLabel.text != splitHeaderOldStr {
+            splitLabel.revealFromLeft(duration: 0.5, completionDelegate: nil)
+        }
+        
+        // update old value
+        splitOldStr = totalPerPerson.text! + tipPerPerson.text! + totalPerPersonExcudeTip.text!
+        splitHeaderOldStr = splitLabel.text
     }
     
     func convertSegmentTitleAtIndexToDouble(segment: UISegmentedControl, index: Int, unit: String, defaultTitleAtIndex: String?) -> Double{
@@ -229,6 +279,12 @@ class ViewController: UIViewController {
         billTotalUIView.layer.borderWidth = 2
         billTotalUIView.layer.cornerRadius = 5
         
+        // bill total header
+        billTotalLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        billTotalLabel.layer.cornerRadius = 5
+        billTotalLabel.layer.masksToBounds = true
+        billTotalLabel.textColor = UIColor.whiteColor()
+        
         // total payment : bkg
         totalPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         totalPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
@@ -239,18 +295,19 @@ class ViewController: UIViewController {
         totalPaymentSubUIView.layer.shadowOpacity = 0.5
         totalPaymentSubUIView.layer.shadowRadius = 2
         // total payment : border
-        totalPaymentLine.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
-        totalPaymentLine0.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        totalPaymentLine0.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
-        totalPaymentLine0.layer.borderWidth = 2
-        totalPaymentLine1.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
         totalPaymentUIView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
         totalPaymentUIView.layer.borderWidth = 2
         totalPaymentUIView.layer.cornerRadius = 5
         tipRateSegment.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
         tipRateSegment.layer.borderWidth = 0
         
-        // plit payment : background 
+        // total payment header
+        totalPaymentHeaderLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        totalPaymentHeaderLabel.layer.cornerRadius = 5
+        totalPaymentHeaderLabel.layer.masksToBounds = true
+        totalPaymentHeaderLabel.textColor = UIColor.whiteColor()
+
+        // plit payment : background
         splitPaymentUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         splitPaymentSubUIView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
         splitSegment.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -266,6 +323,12 @@ class ViewController: UIViewController {
         splitPaymentLine.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         splitPaymentLine.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
         splitPaymentLine.layer.borderWidth = 2
+        
+        // split payment header
+        splitLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        splitLabel.layer.cornerRadius = 5
+        splitLabel.layer.masksToBounds = true
+        splitLabel.textColor = UIColor.whiteColor()
         
         // set font to all UISegmented Control
         var attr = NSDictionary(object: UIFont(name: "chalkduster", size: 16.0)!, forKey: NSFontAttributeName)
@@ -285,7 +348,7 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         serviceSymbolLabel.text = ""
-        serviceLabel.text = ""
+        serviceSymbolLabel.text = ""
         
         setTipRateTitleAtIndex = tipRateSegment.numberOfSegments - 1
         setSplitTitleAtIndex = splitSegment.numberOfSegments - 1
@@ -317,6 +380,7 @@ class ViewController: UIViewController {
         tipRateSegment.buttonClick(tipRateTextfield, slider: slider, unit: "%")
         addDoneButton(tipRateTextfield)
         calculate()
+        keyboardScreen.text = tipRateSegment.titleForSegmentAtIndex(setTipRateTitleAtIndex)! + " tip"
     }
 
     func splitRateButtonClick(){
@@ -331,16 +395,21 @@ class ViewController: UIViewController {
         splitSegment.buttonClick(splitTextfield, slider: slider, unit: "")
         addDoneButton(splitTextfield)
         calculate()
+        keyboardScreen.text = splitSegment.titleForSegmentAtIndex(setSplitTitleAtIndex)! + " people"
     }
     
     func tipRateTextfieldEditingChange(){
         tipRateSegment.textfieldEditingChange(tipRateTextfield, slider: slider, unit: "%", max: 100)
         calculate()
+        keyboardScreen.text = tipRateSegment.titleForSegmentAtIndex(setTipRateTitleAtIndex)! + " tip"
+        totalPaymentValueChangeAnimation()
     }
     
     func splitRateTextfieldEditingChange(){
         splitSegment.textfieldEditingChange(splitTextfield, slider: slider, unit: "", max: 1000000)
         calculate()
+        keyboardScreen.text = splitSegment.titleForSegmentAtIndex(setSplitTitleAtIndex)! + " people"
+        splitPaymentValueChangeAnimation()
     }
     
     func addDoneButton(textField: UITextField) -> Bool {
@@ -355,26 +424,30 @@ class ViewController: UIViewController {
             // slider
             let bounds = UIScreen.mainScreen().bounds
             let deviceWidth = bounds.size.width
-            slider.frame.size.width = CGFloat(deviceWidth - 75)
+            slider.frame.size.width = CGFloat(deviceWidth - 150)
             
             // done button
             var doneItem = UIBarButtonItem()
+            var clearItem = UIBarButtonItem()
             
             if textField == tipRateTextfield {
                 slider.removeTarget(self, action: "slidToChangeSplit", forControlEvents: UIControlEvents.ValueChanged)
                 slider.addTarget(self, action: "slidToChangeTipRate", forControlEvents: UIControlEvents.ValueChanged)
                 doneItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneEditingTipRate") )
+                clearItem = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.Done, target: self, action: Selector("clearTiprateTextfield") )
                 slider.minimumValue = 1
                 slider.maximumValue = 100
             } else if textField == splitTextfield {
                 slider.removeTarget(self, action: "slidToChangeTipRate", forControlEvents: UIControlEvents.ValueChanged)
                 slider.addTarget(self, action: "slidToChangeSplit", forControlEvents: UIControlEvents.ValueChanged)
                 doneItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneEditingSplit") )
+                clearItem = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.Done, target: self, action: Selector("clearSplitTextfield") )
                 slider.minimumValue = 1
                 slider.maximumValue = 100
             }
             
             var items = NSMutableArray()
+            items.addObject(clearItem)
             items.addObject(UIBarButtonItem(customView: slider))
             items.addObject(flexSpace)
             items.addObject(doneItem)
@@ -390,8 +463,31 @@ class ViewController: UIViewController {
             
             // focus on textfield
             textField.becomeFirstResponder()
+            
+            // Keyboard screen
+            keyboardScreen.frame = CGRectMake(0, -40, deviceWidth, 40)
+            keyboardScreen.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+            keyboardScreen.layer.borderWidth = 1
+            keyboardScreen.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.9).CGColor
+            keyboardScreen.textColor = UIColor.whiteColor()
+            keyboardScreen.font = UIFont(name: keyboardScreen.font.fontName, size: 40)
+            keyboardScreen.textAlignment = NSTextAlignment.Center
+            keyboardDoneButtonView.addSubview(keyboardScreen)
         }
         return true
+    }
+    
+    func clearSplitTextfield(){
+        splitSegment.setTitle("", forSegmentAtIndex: setSplitTitleAtIndex)
+        splitTextfield.text = ""
+        slider.value = 0
+    }
+    
+    func clearTiprateTextfield() {
+        tipRateSegment.setTitle("", forSegmentAtIndex: setTipRateTitleAtIndex)
+        tipRateTextfield.text = ""
+        slider.value = 0
+        totalPaymentHeaderLabel.text = "Total Payment with " + "\(tipRateSegment.titleForSegmentAtIndex(tipRateSegment.selectedSegmentIndex)!) " + "Tip"
     }
     
     func slidToChangeTipRate(){
@@ -399,6 +495,7 @@ class ViewController: UIViewController {
         tipRateSegment.setTitle("\(currentValue)" + "%", forSegmentAtIndex: tipRateSegment.numberOfSegments - 1)
         tipRateTextfield.text = "\(currentValue)"
         calculate()
+        keyboardScreen.text = tipRateSegment.titleForSegmentAtIndex(setTipRateTitleAtIndex)! + " tip"
     }
     
     func slidToChangeSplit(){
@@ -406,6 +503,7 @@ class ViewController: UIViewController {
         splitSegment.setTitle("\(currentValue)", forSegmentAtIndex: setSplitTitleAtIndex)
         splitTextfield.text = "\(currentValue)"
         calculate()
+        keyboardScreen.text = splitSegment.titleForSegmentAtIndex(setSplitTitleAtIndex)! + " people"
     }
     
     func doneEditingTipRate(){
