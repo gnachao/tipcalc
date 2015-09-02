@@ -92,13 +92,6 @@ extension UIView {
         helpToMakeFuncUIViewTransitionWithUIViewAnimationTransition(self, animationTime, UIViewAnimationTransition.FlipFromRight)
     }
     
-    func glowEffect(color: UIColor){
-        self.layer.shadowColor = color.CGColor
-        self.layer.shadowRadius = 4.0
-        self.layer.shadowOpacity = 0.9
-        self.layer.shadowOffset = CGSizeZero
-        self.layer.masksToBounds = false
-    }
 }
 
 func helpToMakeFuncUIViewTransition(type: String, subtype: String, duration: NSTimeInterval, completionDelegate: AnyObject?) -> CATransition{
