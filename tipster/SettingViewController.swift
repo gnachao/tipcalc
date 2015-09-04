@@ -22,9 +22,15 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    private var settingData = SettingData()
+    
     var tableView: UITableView?
     var tableViewData = [[UITableViewCell]]()
     var sectionTitle = [String]()
+    
+    let defaultTipRateTextfield = UITextField()
+    let minTipRateTextfield = UITextField()
+    let maxTipRateTextfield = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,14 +75,20 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     // create cell with a textfield with title
-    func newCellWithTextfieldAndTitle(title: String, textfieldPlaceholder: String, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, action: Selector, event: UIControlEvents)->UITableViewCell{
+    func newCellWithTextfieldAndTitle(title: String, textfield: UITextField, initValue: Double, placeholder: String, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, action: Selector, event: UIControlEvents)->UITableViewCell{
         let cell = UITableViewCell()
-        let textfield = newTextfield(textfieldPlaceholder,keyboardType: keyboardType ,keyboardAppearance: keyboardAppearance)
         
         cell.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
         cell.textLabel?.text = title
         cell.textLabel?.sizeToFit()
-
+        
+        textfield.placeholder = placeholder
+        textfield.backgroundColor = UIColor.clearColor()
+        textfield.sizeToFit()
+        textfield.keyboardType = keyboardType
+        textfield.keyboardAppearance = keyboardAppearance
+        textfield.textAlignment = .Right
+        textfield.text = "\(initValue)"
         textfield.addTarget(self, action: action, forControlEvents: event)
         textfield.frame.size.width = UIScreen.mainScreen().bounds.width - cell.textLabel!.frame.size.width - 35
         cell.accessoryView = textfield
@@ -89,22 +101,25 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
         // section: tip rate
         var tipRate = [UITableViewCell]()
         sectionTitle.append("Tip Rate")
-        tipRate.append(newCellWithTextfieldAndTitle("Default", textfieldPlaceholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "defaultTipRateEditingChange", event: UIControlEvents.EditingChanged))
-        tipRate.append(newCellWithTextfieldAndTitle("Minimum", textfieldPlaceholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "minimumTipRateEditingChange", event: UIControlEvents.EditingChanged))
-        tipRate.append(newCellWithTextfieldAndTitle("Maximum", textfieldPlaceholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "maximumTipRateEditingChange", event: UIControlEvents.EditingChanged))
+        tipRate.append(newCellWithTextfieldAndTitle("Default", textfield: defaultTipRateTextfield, initValue: settingData.defaultTipRate, placeholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "defaultTipRateEditingChange", event: UIControlEvents.EditingChanged))
+        tipRate.append(newCellWithTextfieldAndTitle("Minimum", textfield: minTipRateTextfield, initValue: settingData.minTipRate, placeholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "minimumTipRateEditingChange", event: UIControlEvents.EditingChanged))
+        tipRate.append(newCellWithTextfieldAndTitle("Maximum", textfield: maxTipRateTextfield, initValue: settingData.maxTipRate, placeholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "maximumTipRateEditingChange", event: UIControlEvents.EditingChanged))
         tableViewData.append(tipRate)
     }
     
     func defaultTipRateEditingChange(){
-        println("tip rate default edting!")
+        let defaultTipRateStr: NSString = defaultTipRateTextfield.text
+        settingData.saveDefaultTipRate(defaultTipRateStr.doubleValue)
     }
     
     func minimumTipRateEditingChange(){
-        println("tip rate minimum edting!")
+        let minTipRateStr: NSString = minTipRateTextfield.text
+        settingData.saveMinTipRate(minTipRateStr.doubleValue)
     }
     
     func maximumTipRateEditingChange(){
-        println("tip rate maximum edting!")
+        let maxTipRateStr: NSString = maxTipRateTextfield.text
+        settingData.saveMaxTipRate(maxTipRateStr.doubleValue)
     }
     
     // define number of sections
@@ -119,10 +134,8 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // return instances of the UITableViewCell class as rows that populated into table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        
         let cell = tableViewData[indexPath.section][indexPath.row]
         return cell
-        
     }
     
     // title sections
