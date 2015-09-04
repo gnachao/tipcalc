@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E20939D1B9972C700AAE59A /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E20939C1B9972C700AAE59A /* SettingData.swift */; };
+		0E20939F1B99ECA000AAE59A /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E20939E1B99ECA000AAE59A /* ResetSetting.swift */; };
 		0E356AA51B741F8F009C95B2 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E356AA41B741F8F009C95B2 /* UISegmentedControl.swift */; };
 		0E356AA71B7470C6009C95B2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E356AA61B7470C6009C95B2 /* String.swift */; };
 		0E58E5031B70068600F566A6 /* daddysgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E58E5021B70067600F566A6 /* daddysgirl.ttf */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0E20939C1B9972C700AAE59A /* SettingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingData.swift; path = ../SettingData.swift; sourceTree = "<group>"; };
+		0E20939E1B99ECA000AAE59A /* ResetSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		0E356AA41B741F8F009C95B2 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
 		0E356AA61B7470C6009C95B2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0E58E5021B70067600F566A6 /* daddysgirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = daddysgirl.ttf; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				0E7A0FB11B6D492200F7E64A /* Supporting Files */,
 				0EDA6C2B1B92284B00D23B7D /* SettingViewController.swift */,
 				0E20939C1B9972C700AAE59A /* SettingData.swift */,
+				0E20939E1B99ECA000AAE59A /* ResetSetting.swift */,
 			);
 			path = tipster;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				0E20939D1B9972C700AAE59A /* SettingData.swift in Sources */,
 				0E356AA51B741F8F009C95B2 /* UISegmentedControl.swift in Sources */,
 				0EDA6C2C1B92284B00D23B7D /* SettingViewController.swift in Sources */,
+				0E20939F1B99ECA000AAE59A /* ResetSetting.swift in Sources */,
 				0E7A0FB41B6D492200F7E64A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

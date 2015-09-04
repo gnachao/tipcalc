@@ -18,23 +18,28 @@ class SettingData {
         return Singleton.instance
     }
     
+    // constant private properties : factory setting data
+    private let originalDefaulTipRate: Double = 0.05
+    private let originalMinTipRate: Double = 0.0
+    private let originalMaxTipRate: Double = 1.0
+    
     // delcare private properties : setting data
-    private(set) var defaultTipRate: Double = 0.05
-    private(set) var minTipRate: Double = 0.0
-    private(set) var maxTipRate: Double = 1.0
+    private(set) var defaultTipRate: Double
+    private(set) var minTipRate: Double
+    private(set) var maxTipRate: Double
     
     init(){
         let defaults = NSUserDefaults.standardUserDefaults()
         
         // tip rate 
         let storedDefaultTipRate = defaults.doubleForKey("defaultTipRate")
-        defaultTipRate = storedDefaultTipRate == 0 ? 0.05 : storedDefaultTipRate
+        defaultTipRate = storedDefaultTipRate == 0 ? originalDefaulTipRate : storedDefaultTipRate
         
         let storedMinTipRate = defaults.doubleForKey("minTipRate")
-        minTipRate = storedMinTipRate == 0 ? 0.0 : storedMinTipRate
+        minTipRate = storedMinTipRate == 0 ? originalMinTipRate : storedMinTipRate
         
         let storedMaxTipRate = defaults.doubleForKey("maxTipRate")
-        maxTipRate = storedMaxTipRate == 0 ? 1.0 : storedMaxTipRate
+        maxTipRate = storedMaxTipRate == 0 ? originalMaxTipRate : storedMaxTipRate
     }
     
     // set default tip rate
@@ -57,6 +62,13 @@ class SettingData {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setDouble(newValue, forKey: key)
         defaults.synchronize()
+    }
+    
+    // reset defaul setting data to original state
+    func resetAllSetting(){
+        saveDefaultTipRate(originalDefaulTipRate)
+        saveMinTipRate(originalMinTipRate)
+        saveMaxTipRate(originalMaxTipRate)
     }
     
 }

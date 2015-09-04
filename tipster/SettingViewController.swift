@@ -31,6 +31,7 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     let defaultTipRateTextfield = UITextField()
     let minTipRateTextfield = UITextField()
     let maxTipRateTextfield = UITextField()
+    let resetAllSettingButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,30 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
         tipRate.append(newCellWithTextfieldAndTitle("Minimum", textfield: minTipRateTextfield, initValue: settingData.minTipRate, placeholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "minimumTipRateEditingChange", event: UIControlEvents.EditingChanged))
         tipRate.append(newCellWithTextfieldAndTitle("Maximum", textfield: maxTipRateTextfield, initValue: settingData.maxTipRate, placeholder: "%", keyboardType: UIKeyboardType.DecimalPad, keyboardAppearance: UIKeyboardAppearance.Dark, action: "maximumTipRateEditingChange", event: UIControlEvents.EditingChanged))
         tableViewData.append(tipRate)
+        
+        // reset default
+        var reset = [UITableViewCell]()
+        sectionTitle.append("Reset")
+        
+        var resetAllSettingCell = UITableViewCell()
+        resetAllSettingButton.setTitle("Reset All setting", forState: UIControlState.Normal)
+        resetAllSettingButton.setTitleColor(self.view.tintColor, forState: UIControlState.Normal)
+        resetAllSettingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        resetAllSettingButton.frame = CGRectInset(resetAllSettingCell.contentView.bounds, 15, 0)
+        resetAllSettingButton.addTarget(self, action: "resetAllSetting", forControlEvents: UIControlEvents.TouchUpInside)
+        resetAllSettingCell.addSubview(resetAllSettingButton)
+        reset.append(resetAllSettingCell)
+        
+        tableViewData.append(reset)
+       
+    }
+    
+    func resetAllSetting(){
+        println("Press reset all setting")
+        settingData.resetAllSetting()
+        defaultTipRateTextfield.text = "\(settingData.defaultTipRate)"
+        minTipRateTextfield.text = "\(settingData.minTipRate)"
+        maxTipRateTextfield.text = "\(settingData.maxTipRate)"
     }
     
     func defaultTipRateEditingChange(){
@@ -141,11 +166,6 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     // title sections
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
-    }
-    
-    // disable cell select
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return nil
     }
     
     // hide keyboard when tap anywhere on view
